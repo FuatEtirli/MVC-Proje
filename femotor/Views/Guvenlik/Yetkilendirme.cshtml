@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Userr>
+@{
+
+    ViewData["Title"] = "Yetkilendirme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="block block-rounded">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">Hover Table</h3>
+        <div class="block-options">
+            <div class="block-options-item">
+                <code>.table-hover</code>
+            </div>
+        </div>
+    </div>
+    <div class="block-content">
+        <table class="table table-hover table-vcenter">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 50px;">#</th>
+                    <th>Eposta</th>
+                    <th class="d-none d-sm-table-cell" style="width: 15%;">Rol</th>
+                    <th class="text-center" style="width: 100px;">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    int iii = 1;
+                }
+                @foreach (Userr userr in Model)
+                {
+
+                    <tr>
+                        <td class="fw-semibold">
+                            @iii
+                        </td>
+                        <td class="fw-semibold">
+                            <a href="be_pages_generic_profile.html">@userr.Emaill</a>
+                        </td>
+
+
+
+                        <td class="d-none d-sm-table-cell">
+                            <span class="badge @(userr.RoleeID==2?"bg-info":"bg-warning")">@userr.Rolee.RoleeName</span>
+                        </td>
+
+
+
+
+
+
+
+
+                        <td class="text-center">
+                            <div class="btn-group">
+
+                                @if (userr.RoleeID == 3)
+                                {
+                                    <form asp-controller="Guvenlik" asp-action="AdmindenCikar" asp-route-id="@userr.UserrID">
+                                        <button type="submit" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" title="" data-bs-original-title="Adminden Çıkar">
+                                            <i class="fa fa-hand-point-down"></i>
+                                        </button>
+                                    </form>
+                                }
+                                @if (userr.RoleeID == 2)
+                                {
+                                    <form asp-controller="Guvenlik" asp-action="AdminYap" asp-route-id="@userr.UserrID">
+                                        <button type="submit" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" title="" data-bs-original-title="Admin Yap">
+                                            <i class="fa fa-hand-point-up"></i>
+                                        </button>
+                                    </form>
+                                }
+
+
+                            </div>
+                        </td>
+                    </tr>
+                    iii++;
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

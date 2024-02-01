@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Rolee>
+@{
+    ViewData["Title"] = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">ROL YÖNETİMİ</h4>
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+        <div class="d-flex justify-content-end align-items-center">
+            <a class="remove" title="EKLE" asp-controller="Rol" asp-action="Ekle">
+                <i class="mdi mdi-plus-circle-outline mdi-48px"></i> 
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row mt-4">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+             
+                <h6 class="card-subtitle">Bu Sayfada Roller İle İlgili İşlemler Yapılır</h6>
+                <div class="table-responsive">
+                    <table class="table full-color-table full-danger-table hover-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Rol ID</th>
+                                <th>Rol Adı</th>
+                                <th>İşlemler</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int iii = 1;
+                            }
+
+                            @foreach (Rolee rolee in Model)
+                            {
+                                <tr>
+                                    <td>@iii</td>
+                                    <td>@rolee.RoleeID</td>
+                                    <td>@rolee.RoleeName</td>
+                                    <td>
+                                        <a class="remove" asp-controller="Rol" asp-action="Sil" asp-route-id="@rolee.RoleeID" title="Sil">
+                                            <i class="mdi mdi-delete-empty mdi-24px"></i>
+                                        </a>
+                                        <a class="remove" asp-controller="Rol" asp-action="Duzenle" asp-route-id="@rolee.RoleeID" title="Düzenle">
+                                            <i class="mdi mdi-pencil-lock mdi-24px"></i>
+                                        </a>
+                                        <a class="remove" asp-controller="Rol" asp-action="Detay" asp-route-id="@rolee.RoleeID" title="Detay">
+                                            <i class="mdi mdi-information-outline mdi-24px"></i>
+                                        </a>
+
+                                    </td>
+
+
+                                </tr>
+                                iii++;
+                            }
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model Userr
+
+
+
+<div class="login-register-area pt-95 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                        <div class="login-register-wrapper">
+                            <div class="login-register-tab-list nav">
+                                <a class="active" data-toggle="tab" >
+                                    <h4> Kayıt Ol </h4>
+                                </a>
+                               
+                            </div>
+                            
+                                
+                                    <div class="login-form-container">
+                                        <div class="login-register-form">
+                                           <form asp-controller="Hesap" asp-action="KayitOl">
+                                                <div asp-validation-summary="All" class="text-danger"></div>
+                                                <input name="Emaill" placeholder="Email" type="email" value="@Model.Emaill">
+                                                <input type="password" name="Passwordd" placeholder="Şifre">
+                                                <input type="password" name="PasswordRepeatt" placeholder="Şifre Tekrar">
+                                                
+                                                <div class="button-box">
+                                                    <div class="login-toggle-btn">                                                        
+                                                        <a asp-controller="Hesap" asp-action="Giris">Zaten Üyeyim</a>
+                                                    </div>
+                                                    <button type="submit"><span>Kayıt Ol</span></button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

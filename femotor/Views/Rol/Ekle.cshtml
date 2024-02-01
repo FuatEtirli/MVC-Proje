@@ -1,0 +1,47 @@
+﻿@model Rolee
+@{
+    ViewData["Title"] = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mt-4">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header bg-info">
+                <h4 class="m-b-0 text-white">ROL EKLE</h4>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Rol" asp-action="Ekle" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    
+                    <div class="form-body">
+
+
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label>ROL ID</label>
+                                    <input  type="number" name="RoleeID" class="form-control" value="@Model.RoleeID"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>ROL ADI</label>
+                                    <input type="text" name="RoleeName" class="form-control" value="@Model.RoleeName"/>
+                                </div>
+                            </div>
+                            
+                        </div>
+                       
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> EKLE</button>
+                        <button type="button" class="btn btn-inverse">İPTAL</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

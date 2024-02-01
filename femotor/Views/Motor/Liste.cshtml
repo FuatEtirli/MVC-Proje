@@ -1,0 +1,89 @@
+﻿@model IEnumerable<femotor.Models.Motor>
+@{
+    ViewData["Title"] = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h4 class="text-themecolor">MOTOR YÖNETİMİ</h4>
+    </div>
+    <div class="col-md-7 align-self-center text-right">
+        <div class="d-flex justify-content-end align-items-center">
+            <a class="remove" title="EKLE" asp-controller="Motor" asp-action="Ekle">
+                <i class="mdi mdi-plus-circle-outline mdi-48px"></i> 
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row mt-4">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+             
+                <h6 class="card-subtitle">Bu Sayfada Motorlar İle İlgili İşlemler Yapılır</h6>
+                <div class="table-responsive">
+                    <table class="table full-color-table full-danger-table hover-table">
+                        <thead>
+                            <tr>
+                                <th>Motor ID</th>
+                                    <th data-priority="1">Marka</th>
+                                    <th data-priority="1">Model</th>
+                                    <th data-priority="3">Kasa Tipi</th>
+                                    <th data-priority="1">Vites Tipi</th>
+                                    <th data-priority="1">Renk Tipi</th>
+                                    <th data-priority="6">Motor Hacmi</th>
+                                    <th data-priority="6">Fiyat</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int iii = 1;
+                            }
+
+                            @foreach (Motor motor in Model)
+                            {
+                                <tr>
+                                  
+                                    <td>@motor.MotorID</td>
+                                    <td>@motor.Brand</td>
+                                    <td>@motor.MotorModel</td>
+                                    <td>@motor.BodyType</td>
+                                    <td>@motor.GearType</td>
+                                    <td>@motor.Color</td>
+                                    <td>@motor.EngineVolume</td>
+                                    <td>@motor.Price</td>
+                                    
+                                    <td>
+                                        <a class="remove" asp-controller="Motor" asp-action="Delete" asp-route-id="@motor.MotorID" title="Sil">
+                                            <i class="mdi mdi-delete-empty mdi-24px"></i>
+                                        </a>
+                                        <a class="remove" asp-controller="Motor" asp-action="Edit" asp-route-id="@motor.MotorID" title="Düzenle">
+                                            <i class="mdi mdi-pencil-lock mdi-24px"></i>
+                                        </a>
+                                        <a class="remove" asp-controller="Motor" asp-action="Details" asp-route-id="@motor.MotorID" title="Detay">
+                                            <i class="mdi mdi-information-outline mdi-24px"></i>
+                                        </a>
+
+                                    </td>
+
+
+                                </tr>
+                                iii++;
+                            }
+
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+﻿@model HomeViewModel
+@{
+    Layout = "_LayoutClient";
+}
+
+<div class="section-category">
+    <div class="uk-container uk-container-large">
+        <div class="uk-position-relative uk-slider uk-slider-container" tabindex="-1" data-uk-slider="">
+            <ul class="uk-slider-items uk-grid uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-child-width-1-5@xl" style="transform: translate3d(0px, 0px, 0px);">
+                              
+                @foreach (BodyType bodytype in Model.BodyTypeList)
+                {
+                    <li tabindex="-1" class="uk-active">
+                      <div class="category-item"><a class="category-item__link" href="https://localhost:7280/?kat=@(bodytype.BodyTypeID)">
+                       <div class="category-item__title"> <strong>@bodytype.BodyTypeName</strong><span></span></div>
+                       <div class="category-item__icon"><img src="/Keymoto/assets/img/icons/category-4.svg" alt="icon-category" data-uk-svg=""></div>
+                      </a></div>
+                    </li>                                       
+                }                       
+            </ul>                  
+        </div>
+    </div>
+</div>
+
+
+<div class="uk-section-large uk-container">
+    <div class="section-title uk-text-center">
+        <img src="assets/img/logo-dark.svg" alt=""><span>Sürücüler İçin Yeni Bir Sürüş Deneyimi</span>
+        <h3 class="uk-h2">Hayalinizdeki Motorsiklet Bu Sitede Mevcut.</h3>
+    </div>
+    <div class="section-content">
+        <div class="uk-text-center uk-margin-medium-bottom">
+            
+        </div>
+        <div data-uk-filter=".js-filter">
+           
+            <ul class="js-filter uk-grid uk-grid-medium uk-child-width-1-3@l uk-child-width-1-2@s" data-uk-grid="">
+                               
+                @foreach (Motor motor in Model.MotorList) 
+                {
+                 <li data-tags="sports used latest" class="uk-grid-margin uk-first-column">
+                  <div class="product-item uk-transition-toggle">
+                    <div class="product-item__head">
+                      <div>
+                        <div class="product-item__name"> <a>@motor.Brand</a></div>
+                        
+                      </div>
+                      <div>
+                        <div class="product-item__price">@motor.MotorModel</div>
+                      </div>
+                    </div>
+                    <div class="product-item__media uk-inline-clip uk-inline"><img src="~/Keymoto/assets/img/product-4.jpg" alt="Temsili Görsel"><a class="uk-transition-fade"  asp-controller="MotorDetay" asp-action="Index" asp-route-id="@motor.MotorID" >
+                        <div class="uk-overlay-cover uk-overlay-primary"></div>
+                        <div class="uk-position-center"><span uk-icon="icon: plus; ratio: 2" class="uk-icon"><svg width="40" height="40" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="plus"><rect x="9" y="1" width="1" height="17"></rect><rect x="1" y="9" width="17" height="1"></rect></svg></span></div>
+                      </a><button class="product-item__whish btn-whish"><svg class="svg-inline--fa fa-heart fa-w-16" aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z"></path></svg><!-- <i class="far fa-heart"></i> Font Awesome fontawesome.com --></button></div>
+                    <div class="product-item__info">
+                      <ul class="list-info">
+                        <li class="list-info-item">
+                          <div class="list-info-item__title">Year</div>
+                          <div class="list-info-item__value">@motor.ModelYear</div>
+                        </li>
+                        <li class="list-info-item">
+                          <div class="list-info-item__title">Type</div>
+                          <div class="list-info-item__value">@motor.BodyType</div>
+                        </li>
+                        <li class="list-info-item">
+                          <div class="list-info-item__title">Price</div>
+                          <div class="list-info-item__value">@motor.Price ₺</div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="product-item__specifications">
+                      <ul class="specifications-list">
+                       
+                        <li class="specifications-list-item">
+                          
+                          <div class="specifications-list-item__desc">
+                            <div class="specifications-list-item__title">Engine Power</div>
+                            <div class="specifications-list-item__value">@motor.EngineVolume cc</div>
+                          </div>
+                        </li>
+                        <li class="specifications-list-item">
+                          
+                          <div class="specifications-list-item__desc">
+                            <div class="specifications-list-item__title">Gear Type</div>
+                            <div class="specifications-list-item__value">@motor.GearType</div>
+                          </div>
+                        </li>
+                        <li class="specifications-list-item">
+                          
+                          <div class="specifications-list-item__desc">
+                            <div class="specifications-list-item__title">Color</div>
+                            <div class="specifications-list-item__value">@motor.Color</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+</div>
